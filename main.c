@@ -161,7 +161,8 @@ void update_clock(uint8_t elapsed_millis){
 
 
 }
-//commento solo per provare git
+//commento solo per provare git...funziona???
+
 #define NUM_MENUS 4
 
 void update_menu(int8_t e_dir, uint8_t b_pressed, uint8_t reset_to_main_menu){
