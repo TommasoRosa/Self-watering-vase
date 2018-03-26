@@ -161,12 +161,8 @@ void update_clock(uint8_t elapsed_millis){
 
 
 }
-
+//commento solo per provare git
 #define NUM_MENUS 4
-
-
-
-
 
 void update_menu(int8_t e_dir, uint8_t b_pressed, uint8_t reset_to_main_menu){
 
@@ -337,7 +333,6 @@ void update_menu(int8_t e_dir, uint8_t b_pressed, uint8_t reset_to_main_menu){
 						temp[0]='0' + (water_schedule[item].hour / 10);
 						temp[1]='0' + (water_schedule[item].hour % 10);
 						lcd_puts(temp);
-						
 					}
 					else lcd_puts_P(L(": No water"));
 				}
