@@ -5,6 +5,7 @@
             "includePath": [
                 "/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1",
                 "/usr/local/include",
+                "/usr/local/CrossPack-AVR/avr/include",
                 "/Library/Developer/CommandLineTools/usr/bin/../lib/clang/7.3.0/include",
                 "/Library/Developer/CommandLineTools/usr/include",
                 "/usr/include",

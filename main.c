@@ -1,16 +1,17 @@
 
 #define F_CPU 8000000
+#ifndef __AVR_ATmega328P__
+	#define __AVR_ATmega328P__
+#endif
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <stdlib.h>
 #include <util/delay.h>
 
-//#include <avr/iom328p.h> //included only for the sake of the IDE not being able to otherwise fetch the #defines from the correct file
-
 #include "LCD_lib/lcd.c"
 #include "RTC_lib/RTC.c"
-#include "I2C.c"
+
 
 #include <avr/pgmspace.h>
 
@@ -50,7 +51,7 @@
 #define MILLIS_CALIBRATION 5
 #define MICROS_CALIBRATION 56
 
-#define ML_2_MS 186
+#define ML_2_MS 266
 
 #define wrap_around(var, num) var += (var>=num)? (-num) :(var<0) ? num :0
 
@@ -566,16 +567,15 @@ int main(void) {
 	time.hours = atoi(&TIME__[0]);
 	time.days = 6;
 	//if the cause of the reset was due to programming, update the date
-	/*
-	if  (!((MCUSR >> PORF) & 0x01)) { // todo: check if this works
+	//if  (!((MCUSR >> PORF) & 0x01)) { // todo: check if this works
+	if (1) {
 		_tm.sec=time.seconds;
 		_tm.min=time.minutes;
 		_tm.hour=time.hours;
 		_tm.wday=time.days;
 		rtc_set_time(&_tm);
 	}
-	*/
-	rtc_get_time();
+	else rtc_get_time();
 	time.seconds = (int8_t) _tm.sec;
 	time.minutes = (int8_t) _tm.min;
 	time.hours = (int8_t) _tm.hour;
@@ -697,7 +697,7 @@ void update_the_stuff(uint8_t tick_tock){
 
 
 	//if the time is right, if today it should water, and has not watered previously today...water
-	if (!water_schedule[today].is_being_changed){ //only water once things have been set
+	if (!water_schedule[today].is_being_changed && !time.is_being_changed){ //only water once things have been set
 		if ((water_schedule[today].hour == time.hours) && !(water_schedule[today].done_today) && water_schedule[today].on){
 			MOTOR_ON;
 			SECOND_MOTOR_ON;

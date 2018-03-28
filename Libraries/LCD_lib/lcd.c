@@ -1,9 +1,11 @@
 #include "lcd.h"
-
+#ifndef __AVR_ATmega328P__ 
+	#define __AVR_ATmega328P__
+#endif
 #include <stdarg.h>
 #include <stdio.h>
 #include <util/delay.h>
-#include <avr/iom328p.h>
+//#include <avr/iom328p.h>
 #include <avr/pgmspace.h>
 
 void lcd_send(uint8_t value, uint8_t mode);

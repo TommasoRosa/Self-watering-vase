@@ -7,11 +7,14 @@
 
 #ifndef LIBRARIES_I2C_C_
 #define LIBRARIES_I2C_C_
+#ifndef __AVR_ATmega328P__ 
+	#define __AVR_ATmega328P__
+#endif
 
 #include <avr/io.h>
 #include <stdio.h>
 //#include <util/delay.h>
-#include <avr/iom328p.h>
+//#include <avr/iom328p.h>
 #include <avr/pgmspace.h>
 
 

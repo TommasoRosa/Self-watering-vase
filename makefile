@@ -24,14 +24,15 @@ LIBDIR = -I include.  -I Libraries
 
 PROGRAMMER_TYPE = usbasp
 # extra arguments to avrdude: baud rate, chip type, -F flag, etc.
-PROGRAMMER_ARGS = -C /Users/Tommy/opt/AVR/etc/avrdude.conf 
+PROGRAMMER_ARGS = -C //usr/local/CrossPack-AVR-20131216/etc/avrdude.conf 
 
 ##########------------------------------------------------------##########
 ##########                  Program Locations                   ##########
 ##########     Won't need to change if they're in your PATH     ##########
 ##########------------------------------------------------------##########
 
-TOOLPATH = /Users/Tommy/opt/AVR
+#TOOLPATH = /Users/Tommy/opt/AVR
+TOOLPATH = /usr/local/CrossPack-AVR
 BINDIR = $(TOOLPATH)/bin
 
 CC = $(BINDIR)/avr-gcc
