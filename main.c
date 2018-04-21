@@ -566,9 +566,8 @@ int main(void) {
 	time.minutes = atoi(&TIME__[3]);
 	time.hours = atoi(&TIME__[0]);
 	time.days = 6;
-	//if the cause of the reset was due to programming, update the date
-	//if  (!((MCUSR >> PORF) & 0x01)) { // todo: check if this works
-	if (1) {
+	
+	if (0) {
 		_tm.sec=time.seconds;
 		_tm.min=time.minutes;
 		_tm.hour=time.hours;
@@ -576,6 +575,7 @@ int main(void) {
 		rtc_set_time(&_tm);
 	}
 	else rtc_get_time();
+
 	time.seconds = (int8_t) _tm.sec;
 	time.minutes = (int8_t) _tm.min;
 	time.hours = (int8_t) _tm.hour;
